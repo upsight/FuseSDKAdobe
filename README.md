@@ -14,7 +14,7 @@ Installation
 To integrate the plugin into your Flash project, follow the following steps:
 
 1.  First, copy the AIRFuseAPI.ane and AIRFuseAPI.swf found in the github directory (/bin/) into your project.
-2.  Next, in Flash navigate to:<rr />File->Air fo iOS Settings->General<br />In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
+2.  Next, in Flash navigate to:<rr />File->Air for iOS Settings->General<br />In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
 3.  Finally, navigate to:
 
 File->Advanced Actionscript Settings->Library Path
@@ -29,7 +29,7 @@ To use the AIRFuseAPI plugin in your Flash project, first import Fuse package:
 
     import com.fuse.ane.*;
 
-Next, call 'startSession' as soon at the app is initialized:
+Next, call 'startSession' as soon as the app is initialized:
 
     public class KillerApp extends App {
         fuse = new AirFuseAPI();
