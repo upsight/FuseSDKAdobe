@@ -14,14 +14,8 @@ Installation
 To integrate the plugin into your Flash project, follow the following steps:
 
 1.  First, copy the AIRFuseAPI.ane and AIRFuseAPI.swf found in the github directory (/bin/) into your project.
-
-2.  Next, in Flash navigate to:
-
-File->Air fo iOS Settings->General
-
-In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
-
-2.  Finally, navigate to:
+2.  Next, in Flash navigate to:<rr />File->Air fo iOS Settings->General<br />In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
+3.  Finally, navigate to:
 
 File->Advanced Actionscript Settings->Library Path
 
@@ -33,53 +27,92 @@ Usage
 
 To use the AIRFuseAPI plugin in your Flash project, first import Fuse package: 
 
-    ```
     import com.fuse.ane.*;
-    ```
 
 Next, call 'startSession' as soon at the app is initialized:
 
-    ```
     public class KillerApp extends App {
     
         fuse = new AirFuseAPI();
         fuse.startSession('<YOUR FUSE API KEY>');
     }
 
-    ```
-
 The Fuse API key can be found in your dashboard view for the app your are trying to integrate by navigating to Admin->Integrate SDK in the (Fuseboxx)[https://www.fuseboxx.com] dashboard.
 
 
 ### Features ####
 
+The current list of features supported by the Fuse ANE plugin are as follows:
 
 #### Interstitial Ads ####
 
+    fuse.showAd(adResponseCallback);
 
-    ```
-    fuse.showAd(_delegate);
-    ```
+    function adResponseCallback() {
+        // The ad has been closed - proceed
+    }
+
+### Interstitial Ad Availability ###
+    
+    fuse.checkAdAvailable(adCheckResponseCallback);
+
+    function adCheckResponseCallback(available:Boolean, error:int) {
+    
+        if (error == 0 && available) {
+            // Ad is available
+        }
+    }
 
 
 #### Analytics Events ####
 
+There are a number of ways to register data in the Fuse analytics system:
+
+    // A five-level event with two dictionaries
+    fuse.registerEvent("Game Events", {"Level Completed": "2"}, {"Win": 0, "Difficulty": 5});
+    
+    // A five-level analytics event with one dictionary
+    fuse.registerEvent("Game Events", "Level Completed", "2", {"Win": 0, "Difficulty": 5});
+
+    // A three-level analytics event
+    fuse.registerEvent("Game Events", "Level Completed", "2");
+    
+    // Or
+    fuse.registerEvent("Game Events", {"Level Completed": "2"});
 
 #### More Games ####
 
-
+    fuse.displayMoreGames();
+    
+    
 #### Fuse Notifications ####
+
+    fuse.displayNotifications();
 
 
 #### App Configuration Parameters ####
 
+App configuration key/value pairs can be configured in the Fuseboxx dashboard.  The code to access the values are as follows:
+
+    var _key:String = "test_key";
+    
+    var _value:String = fuse.getGameConfigurationValue(_key);
+
 
 #### Registering Levels ####
+
+    var _level:int = 5; // the user's achieved level
+    
+    fuse.registerLevel(_level);
 
 
 #### Registering Currency ####
 
-
+    var _type:int = 0; // type in 0->3
+    var _balance:int = 52; // the users's current balance
+    
+    fuse.registerCurrency(_type, _balance);
+    
 
 Build script
 ---------
