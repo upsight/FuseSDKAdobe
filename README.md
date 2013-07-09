@@ -32,7 +32,6 @@ To use the AIRFuseAPI plugin in your Flash project, first import Fuse package:
 Next, call 'startSession' as soon at the app is initialized:
 
     public class KillerApp extends App {
-    
         fuse = new AirFuseAPI();
         fuse.startSession('<YOUR FUSE API KEY>');
     }
@@ -57,7 +56,6 @@ The current list of features supported by the Fuse ANE plugin are as follows:
     fuse.checkAdAvailable(adCheckResponseCallback);
 
     function adCheckResponseCallback(available:Boolean, error:int) {
-    
         if (error == 0 && available) {
             // Ad is available
         }
