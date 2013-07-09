@@ -1,0 +1,15 @@
+<platform xmlns="http://ns.adobe.com/air/extension/3.1">
+    <sdkVersion>4.3</sdkVersion>
+    <copyright>2013 Fuse Powered Inc.</copyright>
+    <linkerOptions>
+        <option>-framework GameKit</option>
+    	<option>-framework StoreKit</option>
+        <option>-weak_framework CoreTelephony</option>
+        <option>-weak_framework AdSupport</option>
+        <option>-framework Foundation</option>
+        <option>-framework UIKit</option>
+        <option>-framework QuartzCore</option>
+        <option>-framework CoreGraphics</option>
+        <option>-ObjC</option>
+    </linkerOptions> 
+</platform>
