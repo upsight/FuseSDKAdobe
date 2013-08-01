@@ -102,6 +102,7 @@ enum kFuseAdErrors
 {
     FUSE_AD_NO_ERROR = 0,
     FUSE_AD_NOT_CONNECTED,
+    FUSE_AD_SESSION_FAILURE,
 };
 
 enum kFuseEventErrors
@@ -1526,7 +1527,7 @@ enum kFuseEventErrors
     if (error.code == 0 && auth) {
  
     NSLog(@"Player ID is %@", [auth propertyForKey:@"user_id"]);
-    [FuseAPI googlePlayLogin:[auth propertyForKey:@"user_id"] Alias:@"Tomboy22"];
+    [FuseAPI googlePlayLogin:[auth propertyForKey:@"user_id"] Alias:@"Tomboy22" AccessToken:[auth accessToken]];
  
     ...
  
@@ -1547,12 +1548,13 @@ enum kFuseEventErrors
  
  @param _id [NSString*] The unique user ID provided by google of the user
  @param _alias [NSString*] The alias or 'handle' of the user
- @since Fuse API version 1.29
+ @param _token [NSString*] The user's access token.  Used to retrieve friends lists
  @see startSession:Delegate: to see how to register a \<FuseDelegate\> object to receive the optional callback
  @see FuseDelegate::accountLoginComplete:Account: to see more information on the account complete callback
  @see getFuseID for more information on retrieving the user's Fuse ID once signed in
+ @since Fuse API version 1.29
  */
-+(void) googlePlayLogin:(NSString*)_id Alias:(NSString*)_alias;
++(void) googlePlayLogin:(NSString*)_id Alias:(NSString*)_alias AccessToken:(NSString*)_token;
 
 /*!
  * @brief Get the original account ID used to log in to the Fuse system that corresponds to the Fuse ID
