@@ -1,12 +1,12 @@
 Air Native Extension for Fuse API (iOS)
 ======================================
 
-This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for the [FuseAPI](http://www.fuseboxx.com) on iOS.
+This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for the [FuseAPI](http://www.fuseboxx.com).
 
 Fuse API
 ---------
 
-This ANE uses Fuse API version 1.29
+This ANE uses Fuse API version 1.31
 
 Installation
 ---------
@@ -51,7 +51,7 @@ The current list of features supported by the Fuse ANE plugin are as follows:
         // The ad has been closed - proceed
     }
 
-### Interstitial Ad Availability ###
+#### Interstitial Ad Availability ####
     
     fuse.checkAdAvailable(adCheckResponseCallback);
 

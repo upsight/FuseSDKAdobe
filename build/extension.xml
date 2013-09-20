@@ -28,13 +28,13 @@
             </applicationDeployment>
     </platform>
  
-   <!--<platform name="Android-ARM"> 
+    <platform name="Android-ARM"> 
         <applicationDeployment> 
-            <nativeLibrary>libFuseAPIAndroid.jar</nativeLibrary> 
-            <initializer>com.fusepowered.AirFuseAPI.AirFuseAPIExtension</initializer> 
-            <finalizer>com.fusepowered.AirFuseAPI.AirFuseAPIExtension</finalizer> 
+            <nativeLibrary>libAirFuseAPI.jar</nativeLibrary> 
+            <initializer>com.fuse.ane.AirFuseAPI.AirFuseAPIExtension</initializer> 
+            <finalizer>com.fuse.ane.AirFuseAPI.AirFuseAPIExtension</finalizer> 
         </applicationDeployment>
-    </platform>-->
+    </platform>
     
     <platform name="default"> 
         <applicationDeployment/> 

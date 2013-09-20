@@ -5,8 +5,7 @@
     <property file="build.config"/>
 
     <!-- All -->
-    <!-- <target name="all" depends="ios,android,swc,package" description="Full build of extension"/> -->
-    <target name="all" depends="ios,swc,package" description="Full build of extension"/>
+    <target name="all" depends="ios,android,swc,package" description="Full build of extension"/>
 
     <!-- iOS -->
     <target name="ios" description="Build iOS Library">
@@ -39,15 +38,13 @@
             <classpath>
                 <pathelement location="${android.sdk}/android.jar"/>
                 <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
-                <pathelement location="../android/libs/FuseAPIAndroid.jar"/>
+                <pathelement location="../android/libs/FuseAPI.jar"/>
             </classpath>
         </javac>
 
         <mkdir dir="../android/temp/zip"/>
-        <unzip src="../android/libs/FuseAPIAndroid.jar" dest="../android/temp/zip" />
-        <unzip src="../android/libs/bson.jar" dest="../android/temp/zip" />
+        <unzip src="../android/libs/FuseAPI.jar" dest="../android/temp/zip" />
         <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
-        <copydir src="../android/temp/zip/org" dest="../android/temp/classes/org"/>
 
         <mkdir dir="../temp/android/"/>
         <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/>
@@ -80,7 +77,7 @@
 
         <unzip src="../temp/swc/${name}.swc" dest="../temp/swc/content" overwrite="true"/>
         <copy file="../temp/swc/content/library.swf" todir="../temp/ios" overwrite="true"/>
-        <!-- <copy file="../temp/swc/content/library.swf" todir="../temp/android" overwrite="true"/> -->
+        <copy file="../temp/swc/content/library.swf" todir="../temp/android" overwrite="true"/>
         <copy file="../temp/swc/content/library.swf" todir="../temp/default" overwrite="true"/>
         <delete dir="../temp/swc/content/"/>
     </target>
@@ -96,13 +93,12 @@
             <arg value="../build/extension.xml"/>
             <arg line="-swc swc/${name}.swc"/>
             <arg line="-platform iPhone-ARM -platformoptions ../build/platform.xml -C ios/ ."/>
-            <!-- <arg line="-platform Android-ARM -C android/ ."/> -->
+            <arg line="-platform Android-ARM -C android/ ."/>
             <arg line="-platform default -C default/ ."/>
         </exec>
 
-	<move file="../temp/swc/${name}.swc" todir="../bin"/>
+	    <move file="../temp/swc/${name}.swc" todir="../bin"/>
         <move file="../temp/${name}.ane" todir="../bin"/>
         <delete dir="../temp"/>
     </target>
-
 </project>

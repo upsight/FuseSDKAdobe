@@ -22,6 +22,7 @@ package com.fuse.ane
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
 	import flash.system.Capabilities;
+	import flash.events.*;
 	
 	public class AirFuseAPI extends EventDispatcher
 	{
@@ -33,6 +34,9 @@ package com.fuse.ane
 		
 		public function AirFuseAPI()
 		{
+			var is_ios:Boolean = Capabilities.manufacturer.indexOf('iOS') > -1;
+			var is_android:Boolean = Capabilities.manufacturer.indexOf('Android') > -1;
+
 			if (!_instance)
 			{
 				adCloseCallback = null;
@@ -47,6 +51,12 @@ package com.fuse.ane
 				else
 				{
 					trace('[Fuse] Error - Extension Context is null.');
+				}
+				
+				if (is_android)
+				{
+					this.addEventListener(Event.DEACTIVATE, deactivate);
+					this.addEventListener(Event.ACTIVATE, activate);				
 				}
 				
 				_instance = this;
@@ -260,6 +270,19 @@ package com.fuse.ane
 		public function addListener(type:String, listener:Function, useCapture:Boolean=false, priority:int=0, useWeakReference:Boolean=false) : void
 		{
 			extCtx.addEventListener(type, listener);
+		}
+		
+		// Application Events
+		public function activate(event:Event) : void
+		{
+			//trace('[Fuse] resumeSession: ' + event);
+			extCtx.call('resumeSession');
+		}
+		
+		public function deactivate(event:Event) : void
+		{
+			//trace('[Fuse] suspendSession:' + event);
+			extCtx.call('suspendSession');
 		}
 		
 		// Dispatches an event into the event flow.
