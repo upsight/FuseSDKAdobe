@@ -54,6 +54,7 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
     WebView webView;
     RelativeLayout.LayoutParams params;
     FrameLayout.LayoutParams layoutParams;
+    private static boolean closing = false;
     
     final int ICE_CREAM_SANDWICH = 14;
     final int ICE_CREAM_SANDWICH_MR1 = 15;
@@ -268,18 +269,33 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
             break;
         }
     }
-
+    
     @Override
-    protected void onResume() {
-        super.onResume();
-        FuseAPI.initializeFuseAPI(this, getApplicationContext());
+    protected void onPause()
+    {
+        super.onPause();
+        
+        if( !closing )
+        {
+            FuseAPI.overrideSuspend = true;
+            FuseAPI.suspendSession();
+        }
+        closing = false;
     }
 
     @Override
-    protected void onStop() {
+    protected void onResume()
+    {
+        super.onResume();
+        FuseAPI.initializeFuseAPI(this, getApplicationContext());
+        FuseAPI.resumeSession(null);
+    }
+
+    @Override
+    protected void onStop()
+    {
         super.onStop();
         FuseAPI.adDismiss();
-        FuseAPI.suspendSession();
     }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -308,6 +324,7 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
     
     public void handleOnExit()
     {
+        closing = true;
 		Animation transition = FuseAnimationController.getSlideOutAnimation(500);
 	    transition.setAnimationListener(new AnimationListener() 
 	    {			
