@@ -6,7 +6,7 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 Fuse API
 ---------
 
-This ANE uses Fuse API version 1.31
+This ANE uses Fuse API version 1.31.2 (iOS) and 1.31.1 (Android).
 
 Installation
 ---------
