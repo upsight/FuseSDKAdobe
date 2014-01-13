@@ -1,7 +1,7 @@
 package com.fusepowered.fuseactivities;
 
-
-
+import java.util.Map;
+import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -51,6 +51,8 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
     int lwidth;
     int lheight;
     double overallscale;
+    boolean callbackActivated = false;
+    
     WebView webView;
     RelativeLayout.LayoutParams params;
     FrameLayout.LayoutParams layoutParams;
@@ -89,6 +91,9 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
         	return;
         }
         webView = new WebView(this);
+        Map<String, String> extraHeaders = new HashMap<String, String>();
+        extraHeaders.put("Referer", "about:blank");
+        webView.loadUrl("about:blank", extraHeaders);
         webView.setBackgroundColor(0);
         webView.setId(1);
         myClient = new Callback();
@@ -236,8 +241,6 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
                     Intent data = new Intent();
                     data.setData(Uri.parse(ActivityResults.AD_DISPLAYED.name()));
                     setResult(RESULT_OK, data);
-                    if (FuseAPI.fuseAdCallback != null && FuseAPI.fuseAdCallback instanceof FuseAdCallback)
-                        FuseAPI.fuseAdCallback.adWillClose();
                     finish();
                 }
             });
@@ -277,7 +280,6 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
         
         if( !closing )
         {
-            FuseAPI.overrideSuspend = true;
             FuseAPI.suspendSession();
         }
         closing = false;
@@ -295,11 +297,35 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
     protected void onStop()
     {
         super.onStop();
-        FuseAPI.adDismiss();
+   
+        if (FuseAPI.fuseAdCallback != null && FuseAPI.fuseAdCallback instanceof FuseAdCallback) {
+
+            if(callbackActivated == false)
+            {
+                FuseAPI.adDismiss();
+                callbackActivated = true;
+                FuseAPI.fuseAdCallback.adWillClose();
+            }
+        }
+            
     }
+    
+    @Override
+    public void onBackPressed()
+    {
+        if(callbackActivated == false)
+        {
+            FuseAPI.adDismiss();
+            FuseAPI.setFuseChildActivityOnDisplay(false);
+            callbackActivated = true;
+            FuseAPI.fuseAdCallback.adWillClose();
+        }
+        
+        finish();
+    }
+    
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-    	Log.d("FUSEAD", "!!!!!! --------- configuration changed -------- !!!!!!");
         super.onConfigurationChanged(newConfig);
 
         layoutParams.gravity = Gravity.CENTER;
@@ -333,8 +359,7 @@ public class FuseApiAdBrowser extends FuseApiBrowser {
 			{
 				layout.setVisibility(View.GONE);
 				Log.d("AdBrowser", "Got an exit event for an ad");
-	            if (FuseAPI.fuseAdCallback != null && FuseAPI.fuseAdCallback instanceof FuseAdCallback)
-	                FuseAPI.fuseAdCallback.adWillClose();
+
 	            finish();				
 			}
 	

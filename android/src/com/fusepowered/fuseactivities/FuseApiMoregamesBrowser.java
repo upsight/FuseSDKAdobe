@@ -31,11 +31,8 @@ import com.fusepowered.fuseapi.NetworkService;
 import com.fusepowered.util.ActivityResults;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class FuseApiMoregamesBrowser extends FuseApiBrowser
-{
+public class FuseApiMoregamesBrowser extends FuseApiBrowser {
 	
-    public static boolean backPressed = false;
-    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,13 +117,9 @@ public class FuseApiMoregamesBrowser extends FuseApiBrowser
         
         ns.createImageButton(imageUrl, imageButton);
         
-        imageButton.setOnClickListener(new OnClickListener()
-        {
+        imageButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-            {
-                FuseApiMoregamesBrowser.backPressed = true;
-                FuseAPI.showingMoreGames = false;
+			public void onClick(View v) {
 				Intent data = new Intent();
 				data.setData(Uri.parse(ActivityResults.MORE_GAMES_DISPLAYED.name()));
 				setResult(RESULT_OK,data);
@@ -147,24 +140,9 @@ public class FuseApiMoregamesBrowser extends FuseApiBrowser
     }
     
     @Override
-    protected void onPause()
-    {
-        super.onPause();
-        FuseAPI.showingMoreGames = false;
-        if( !backPressed )
-        {
-            FuseAPI.suspendSession();
-        }
-        backPressed = false;
-    }
-    
-    @Override
-	protected void onResume()
-    {
+	protected void onResume() {
 		super.onResume();
 		FuseAPI.initializeFuseAPI(this, getApplicationContext());
-        FuseAPI.resumeSession(null);
-        FuseAPI.showingMoreGames = true;
 	}
     
 }

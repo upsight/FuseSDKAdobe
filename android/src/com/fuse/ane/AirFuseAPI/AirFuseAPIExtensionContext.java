@@ -22,11 +22,12 @@ public class AirFuseAPIExtensionContext extends FREContext {
 		functions.put("getGameConfigurationValue", new GetGameConfigurationValueFunction());
 		functions.put("registerLevel", new RegisterLevelFunction());
 		functions.put("registerCurrency", new RegisterCurrencyFunction());
+		functions.put("registerGender", new RegisterGenderFunction());
 		functions.put("gamesPlayed", new GamesPlayedFunction());
 		functions.put("suspendSession", new SuspendSessionFunction());
 		functions.put("resumeSession", new ResumeSessionFunction());
 		functions.put("displayMoreGames", new MoreGamesFunction());
-
+		functions.put("log", new LogFunction());
 		return functions;
 	}
 

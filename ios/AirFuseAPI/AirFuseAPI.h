@@ -25,7 +25,6 @@
 
 @end
 
-
 @interface AirFuseAPIAdDelegate : NSObject <FuseAdDelegate>
 
 + (AirFuseAPIAdDelegate *)sharedInstance;
@@ -37,6 +36,7 @@
 + (AirFuseAPIMoreGamesDelegate *)sharedInstance;
 
 @end
+
 
 // C interface
 
@@ -51,10 +51,13 @@ DEFINE_ANE_FUNCTION(FuseDisplayMoreGames);
 DEFINE_ANE_FUNCTION(FuseGetGameConfigurationValue);
 DEFINE_ANE_FUNCTION(FuseGamesPlayed);
 DEFINE_ANE_FUNCTION(FuseLog);
+DEFINE_ANE_FUNCTION(FuseRegisterGender);
+DEFINE_ANE_FUNCTION(FuseRegisterInAppPurchase);
 
 void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication* application, NSData* deviceToken);
 void didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication* application, NSError* error);
 void didReceiveRemoteNotification(id self, SEL _cmd, UIApplication* application,NSDictionary *userInfo);
+
 
 // ANE setup
 

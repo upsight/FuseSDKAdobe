@@ -1,6 +1,7 @@
 package com.fuse.ane.callback;
 
 import android.app.Activity;
+import android.util.Log;
 import com.fuse.ane.AirFuseAPI.AirFuseAPIExtension;
 import com.fusepowered.util.FuseAdErrors;
 import com.fusepowered.util.FuseAdCallback;
@@ -30,6 +31,7 @@ public class AdCallback extends FuseAdCallback{
 
 	@Override
 	public void adWillClose() {
+        Log.d("FUSE API CALLBACK", " ******************* DISPATCHING AD WILL CLOSE *******************");
 		AirFuseAPIExtension.dispatch("DidCloseInterstitial", "2");
 	}
 	

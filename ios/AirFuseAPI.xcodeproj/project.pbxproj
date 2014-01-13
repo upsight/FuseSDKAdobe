@@ -13,6 +13,9 @@
 		2009E3D91774B75000AFA02D /* FlashRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2009E3D81774B75000AFA02D /* FlashRuntimeExtensions.h */; };
 		20E8C1461774AC77005B1D58 /* AirFuseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E8C1431774AC77005B1D58 /* AirFuseAPI.h */; };
 		20E8C1471774AC77005B1D58 /* AirFuseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C1441774AC77005B1D58 /* AirFuseAPI.m */; };
+		20FE617E1832C79D00CCE8DC /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE617D1832C79D00CCE8DC /* EventKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		20FE61811832C7A300CCE8DC /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE61801832C7A300CCE8DC /* EventKitUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		20FE61B11832E29400CCE8DC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE61B01832E29400CCE8DC /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		39CD1F9F160753D0006D8EB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CD1F9E160753D0006D8EB1 /* Foundation.framework */; };
 		39CD1FA1160753D0006D8EB1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CD1FA0160753D0006D8EB1 /* CoreFoundation.framework */; };
 		39CD1FA3160753D0006D8EB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CD1FA2160753D0006D8EB1 /* UIKit.framework */; };
@@ -36,6 +39,9 @@
 		2009E3D81774B75000AFA02D /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = SOURCE_ROOT; };
 		20E8C1431774AC77005B1D58 /* AirFuseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirFuseAPI.h; sourceTree = "<group>"; wrapsLines = 0; };
 		20E8C1441774AC77005B1D58 /* AirFuseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirFuseAPI.m; sourceTree = "<group>"; wrapsLines = 0; };
+		20FE617D1832C79D00CCE8DC /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		20FE61801832C7A300CCE8DC /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		20FE61B01832E29400CCE8DC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		39CD1F9B160753D0006D8EB1 /* libAirFuseAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAirFuseAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39CD1F9E160753D0006D8EB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		39CD1FA0160753D0006D8EB1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20FE61B11832E29400CCE8DC /* MessageUI.framework in Frameworks */,
+				20FE61811832C7A300CCE8DC /* EventKitUI.framework in Frameworks */,
+				20FE617E1832C79D00CCE8DC /* EventKit.framework in Frameworks */,
 				39CD1FDF1607560E006D8EB1 /* GameKit.framework in Frameworks */,
 				39CD1FDD160755FA006D8EB1 /* StoreKit.framework in Frameworks */,
 				39CD1F9F160753D0006D8EB1 /* Foundation.framework in Frameworks */,
@@ -128,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				2009E3CE1774B71C00AFA02D /* FuseAPI */,
+				20FE61B01832E29400CCE8DC /* MessageUI.framework */,
+				20FE61801832C7A300CCE8DC /* EventKitUI.framework */,
+				20FE617D1832C79D00CCE8DC /* EventKit.framework */,
 				39CD1F9E160753D0006D8EB1 /* Foundation.framework */,
 				39CD1FA0160753D0006D8EB1 /* CoreFoundation.framework */,
 				39CD1FA2160753D0006D8EB1 /* UIKit.framework */,
@@ -268,6 +280,7 @@
 		39CD1FC6160753D0006D8EB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/AirFuseAPI.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AirFuseAPI/AirFuseAPI-Prefix.pch";
@@ -276,7 +289,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FuseAPI\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = AirFuseAPI;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -286,6 +299,7 @@
 		39CD1FC7160753D0006D8EB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/AirFuseAPI.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AirFuseAPI/AirFuseAPI-Prefix.pch";
@@ -294,7 +308,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FuseAPI\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = AirFuseAPI;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";

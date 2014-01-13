@@ -6,7 +6,7 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 Fuse API
 ---------
 
-This ANE uses Fuse API version 1.31.2 (iOS) and 1.31.1 (Android).
+This ANE uses Fuse API version 1.34 (iOS and Android).
 
 Installation
 ---------
@@ -111,6 +111,13 @@ App configuration key/value pairs can be configured in the Fuseboxx dashboard.  
     
     fuse.registerCurrency(_type, _balance);
     
+
+#### Registering Gender ####
+
+    var _gender:int = 0;  // 0 - unknown, 1 - male, 2 - female
+    
+    fuse.registerGender(_gender);
+
 
 Build script
 ---------

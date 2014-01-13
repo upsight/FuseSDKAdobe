@@ -351,7 +351,6 @@ DEFINE_ANE_FUNCTION(FuseRegisterLevel)
 
 DEFINE_ANE_FUNCTION(FuseRegisterCurrency)
 {
-    
     int32_t type = 0;
     int32_t balance = 0;
     
@@ -528,6 +527,70 @@ DEFINE_ANE_FUNCTION(FuseRegisterEvent)
     return freObject;
 }
 
+DEFINE_ANE_FUNCTION(FuseRegisterGender)
+{
+    int32_t gender = 0;
+    
+    if (FREGetObjectAsInt32(argv[0], &gender) == FRE_OK)
+    {
+        [FuseAPI registerGender:gender];
+    }
+    
+    return nil;
+}
+
+
+DEFINE_ANE_FUNCTION(FuseRegisterInAppPurchase)
+{
+    uint32_t stringLength;
+    
+    NSData *receipt_data = nil;
+    
+    // Parameter 1: tx_state
+    int32_t tx_state = 0;
+    
+    if (FREGetObjectAsInt32(argv[0], &tx_state) != FRE_OK)
+    {
+        return nil;
+    }
+    
+    // Parameter 2: Price
+    const uint8_t *price_ptr;
+    if (FREGetObjectAsUTF8(argv[1], &stringLength, &price_ptr) != FRE_OK)
+    {
+        return nil;
+    }
+    NSString *price = [NSString stringWithUTF8String:(char*)price_ptr];
+    
+    // Parameter 2: Currency
+    const uint8_t *currency_ptr;
+    if (FREGetObjectAsUTF8(argv[2], &stringLength, &currency_ptr) != FRE_OK)
+    {
+        return nil;
+    }
+    NSString *currency = [NSString stringWithUTF8String:(char*)currency_ptr];
+    
+    // Parameter 3: Product ID
+    const uint8_t *product_id_ptr;
+    if (FREGetObjectAsUTF8(argv[3], &stringLength, &product_id_ptr) != FRE_OK)
+    {
+        return nil;
+    }
+    NSString *product_id = [NSString stringWithUTF8String:(char*)product_id_ptr];
+    
+    // Parameter 4: Transaction ID
+    const uint8_t *tx_id_ptr;
+    if (FREGetObjectAsUTF8(argv[4], &stringLength, &tx_id_ptr) != FRE_OK)
+    {
+        return nil;
+    }
+    NSString *tx_id = [NSString stringWithUTF8String:(char*)tx_id_ptr];
+    
+    [FuseAPI registerInAppPurchase:receipt_data TxState:tx_state Price:price Currency:currency ProductID:product_id TransactionID:tx_id];
+
+    return nil;
+}
+
 DEFINE_ANE_FUNCTION(FuseDisplayMoreGames)
 {
     [FuseAPI displayMoreGames:[AirFuseAPI sharedInstance]];
@@ -664,7 +727,7 @@ void AirFuseAPIContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     /* The following code describes the functions that are exposed by this native extension to the ActionScript code.
      * As a sample, the function isSupported is being provided.
      */
-    *numFunctionsToTest = 11;
+    *numFunctionsToTest = 13;
 
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToTest));
     
@@ -711,6 +774,14 @@ void AirFuseAPIContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     func[10].name = (const uint8_t*) "log";
     func[10].functionData = NULL;
     func[10].function = &FuseLog;
+    
+    func[11].name = (const uint8_t*) "registerGender";
+    func[11].functionData = NULL;
+    func[11].function = &FuseRegisterGender;
+    
+    func[12].name = (const uint8_t*) "registerInAppPurchase";
+    func[12].functionData = NULL;
+    func[12].function = &FuseRegisterInAppPurchase;
     
     *functionsToSet = func;
 

@@ -45,13 +45,14 @@
         <mkdir dir="../android/temp/zip"/>
         <unzip src="../android/libs/FuseAPI.jar" dest="../android/temp/zip" />
         <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+        <copydir src="../android/temp/zip/android" dest="../android/temp/classes/android"/>
 
         <mkdir dir="../temp/android/"/>
-        <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/>
+        <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/> 
         <copy todir="../temp/android/res/">
             <fileset dir="../android/res"/>
         </copy>
-        <delete dir="../android/temp"/>
+      <!--  <delete dir="../android/temp"/> --> 
     </target>
 
     <!-- Actionscript -->
@@ -99,6 +100,6 @@
 
 	    <move file="../temp/swc/${name}.swc" todir="../bin"/>
         <move file="../temp/${name}.ane" todir="../bin"/>
-        <delete dir="../temp"/>
+       <!-- <delete dir="../temp"/> -->
     </target>
 </project>

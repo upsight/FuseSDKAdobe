@@ -120,6 +120,18 @@ package com.fuse.ane
 		{
 			extCtx.call('registerCurrency', _type, _balance);
 		}
+        
+        // Gender
+		public function registerGender(_gender:int) : void
+		{
+			extCtx.call('registerGender', _gender);
+		}
+        
+        // In-App Purchase Logging
+		public function registerInAppPurchase(_state:int, _price:String, _currency:String, _product_id:String, _transaction_id:String) : void
+		{
+			extCtx.call('registerInAppPurchase', _state, _price, _currency, _product_id, _transaction_id);
+		}
 		
 		// Analytics
 		public function registerEvent(_eventName:String, _p1:*=null, _p2:*=null, _p3:*=null) : int
