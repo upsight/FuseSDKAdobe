@@ -11,6 +11,7 @@
 		2009E3D21774B71C00AFA02D /* libFuseAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2009E3D01774B71C00AFA02D /* libFuseAPI.a */; };
 		2009E3D71774B74900AFA02D /* AirFuseAPI-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2009E3D61774B74900AFA02D /* AirFuseAPI-Prefix.pch */; };
 		2009E3D91774B75000AFA02D /* FlashRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2009E3D81774B75000AFA02D /* FlashRuntimeExtensions.h */; };
+		20A1FF651885EB5200F966F2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A1FF641885EB5200F966F2 /* CoreMedia.framework */; };
 		20E8C1461774AC77005B1D58 /* AirFuseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E8C1431774AC77005B1D58 /* AirFuseAPI.h */; };
 		20E8C1471774AC77005B1D58 /* AirFuseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C1441774AC77005B1D58 /* AirFuseAPI.m */; };
 		20FE617E1832C79D00CCE8DC /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE617D1832C79D00CCE8DC /* EventKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -37,6 +38,7 @@
 		2009E3D01774B71C00AFA02D /* libFuseAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFuseAPI.a; sourceTree = "<group>"; };
 		2009E3D61774B74900AFA02D /* AirFuseAPI-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AirFuseAPI-Prefix.pch"; sourceTree = "<group>"; };
 		2009E3D81774B75000AFA02D /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = SOURCE_ROOT; };
+		20A1FF641885EB5200F966F2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		20E8C1431774AC77005B1D58 /* AirFuseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirFuseAPI.h; sourceTree = "<group>"; wrapsLines = 0; };
 		20E8C1441774AC77005B1D58 /* AirFuseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirFuseAPI.m; sourceTree = "<group>"; wrapsLines = 0; };
 		20FE617D1832C79D00CCE8DC /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A1FF651885EB5200F966F2 /* CoreMedia.framework in Frameworks */,
 				20FE61B11832E29400CCE8DC /* MessageUI.framework in Frameworks */,
 				20FE61811832C7A300CCE8DC /* EventKitUI.framework in Frameworks */,
 				20FE617E1832C79D00CCE8DC /* EventKit.framework in Frameworks */,
@@ -136,6 +139,7 @@
 		39CD1F9D160753D0006D8EB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20A1FF641885EB5200F966F2 /* CoreMedia.framework */,
 				2009E3CE1774B71C00AFA02D /* FuseAPI */,
 				20FE61B01832E29400CCE8DC /* MessageUI.framework */,
 				20FE61801832C7A300CCE8DC /* EventKitUI.framework */,
@@ -251,7 +255,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				USER_HEADER_SEARCH_PATHS = "/Applications/Adobe Flash Builder 4.6/sdks/4.6.0air32/include/";
 			};
 			name = Debug;
@@ -271,7 +275,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				USER_HEADER_SEARCH_PATHS = "/Applications/Adobe Flash Builder 4.6/sdks/4.6.0air32/include/";
 				VALIDATE_PRODUCT = YES;
 			};

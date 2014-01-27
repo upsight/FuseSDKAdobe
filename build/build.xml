@@ -5,7 +5,9 @@
     <property file="build.config"/>
 
     <!-- All -->
-    <target name="all" depends="ios,android,swc,package" description="Full build of extension"/>
+    <target name="all" depends="ios,android,android_support,swc,swc_support,package,package_support" description="Full build of extension"/>
+    <target name="no_support" depends="ios,android,swc,package" description="Full build of extension"/>
+    <target name="support" depends="ios,android_support,swc_support,package_support" description="Full build of extension"/>
 
     <!-- iOS -->
     <target name="ios" description="Build iOS Library">
@@ -23,8 +25,12 @@
             <arg line="-configuration Release"/>
             <arg line="SYMROOT=../temp/ios/build/"/>
         </exec>
-
+        
+        <mkdir dir="../temp/ios"/>
+        <mkdir dir="../temp_support/ios"/>
+        
         <copy file="../temp/ios/build/Release-iphoneos/lib${name}.a" todir="../temp/ios" overwrite="true"/>
+        <copy file="../temp/ios/build/Release-iphoneos/lib${name}.a" todir="../temp_support/ios" overwrite="true"/>
 
         <delete dir="../temp/ios/build/"/>
     </target>
@@ -45,7 +51,6 @@
         <mkdir dir="../android/temp/zip"/>
         <unzip src="../android/libs/FuseAPI.jar" dest="../android/temp/zip" />
         <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
-        <copydir src="../android/temp/zip/android" dest="../android/temp/classes/android"/>
 
         <mkdir dir="../temp/android/"/>
         <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/> 
@@ -54,11 +59,36 @@
         </copy>
       <!--  <delete dir="../android/temp"/> --> 
     </target>
+    
+    <target name="android_support" description="Build Android Library with Support Libraries">
+        <delete dir="../android/temp_support"/>
+        <mkdir dir="../android/temp_support/classes"/>
+
+        <javac srcdir="../android/src" destdir="../android/temp_support/classes" includeantruntime="false">
+            <classpath>
+                <pathelement location="${android.sdk}/android.jar"/>
+                <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
+                <pathelement location="../android/libs/FuseAPI.jar"/>
+            </classpath>
+        </javac>
+
+        <mkdir dir="../android/temp_support/zip"/>
+        <unzip src="../android/libs/FuseAPI.jar" dest="../android/temp_support/zip" />
+        <copydir src="../android/temp_support/zip/com" dest="../android/temp_support/classes/com"/>
+        <copydir src="../android/temp_support/zip/android" dest="../android/temp_support/classes/android"/>
+
+        <mkdir dir="../temp_support/android/"/>
+        <jar basedir="../android/temp_support/classes" destfile="../temp_support/android/lib${name}.jar"/> 
+        <copy todir="../temp_support/android/res/">
+            <fileset dir="../android/res"/>
+        </copy>
+      <!--  <delete dir="../android/temp"/> --> 
+    </target>
 
     <!-- Actionscript -->
     <target name="swc" description="Build SWC library">
         <mkdir dir="../temp/swc/content/"/>
-
+ 
         <fileset dir="../actionscript/src" casesensitive="yes" id="classfiles">
             <include name="**/*.as"/>
         </fileset>
@@ -82,6 +112,34 @@
         <copy file="../temp/swc/content/library.swf" todir="../temp/default" overwrite="true"/>
         <delete dir="../temp/swc/content/"/>
     </target>
+    
+    <!-- Actionscript -->
+    <target name="swc_support" description="Build SWC library for the support library">
+        <mkdir dir="../temp_support/swc/content/"/>
+ 
+        <fileset dir="../actionscript/src" casesensitive="yes" id="classfiles">
+            <include name="**/*.as"/>
+        </fileset>
+
+        <pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+            <regexpmapper from=".*src.(.*)\.as" to="\1"/>
+        </pathconvert>
+
+        <exec executable="${flex.sdk}/bin/compc${bin.ext}" failonerror="true">
+            <env key="AIR_SDK_HOME" value="${flex.sdk}"/>
+            <arg line='-source-path ../actionscript/src'/>
+            <arg line='-output ../temp_support/swc/${name}.swc'/>
+            <arg line='-swf-version=14'/>
+            <arg line='-external-library-path+="${flex.sdk}/frameworks/libs/air/airglobal.swc"'/>
+            <arg line='-include-classes ${classlist}'/>
+        </exec>
+
+        <unzip src="../temp_support/swc/${name}.swc" dest="../temp_support/swc/content" overwrite="true"/>
+        <copy file="../temp_support/swc/content/library.swf" todir="../temp_support/ios" overwrite="true"/>
+        <copy file="../temp_support/swc/content/library.swf" todir="../temp_support/android" overwrite="true"/>
+        <copy file="../temp_support/swc/content/library.swf" todir="../temp_support/default" overwrite="true"/>
+        <delete dir="../temp_support/swc/content/"/>
+    </target>
 
     <!-- Package -->
     <target name="package" description="Create the extension package">
@@ -98,8 +156,40 @@
             <arg line="-platform default -C default/ ."/>
         </exec>
 
+        <mkdir dir="../bin"/>
 	    <move file="../temp/swc/${name}.swc" todir="../bin"/>
         <move file="../temp/${name}.ane" todir="../bin"/>
+       
+        <zip destfile="../bin/AirFuseAPI.zip" basedir="../bin" includes="${name}.swc,${name}.ane" />
+
        <!-- <delete dir="../temp"/> -->
+    </target>
+    
+    <!-- Package -->
+    <target name="package_support" description="Create the extension package with support libraries">
+        <exec executable="${flex.sdk}/bin/adt${bin.ext}" failonerror="true" dir="../temp_support">
+            <env key="AIR_SDK_HOME" value="${flex.sdk}"/>
+            <arg value="-package"/>
+            <arg value="-target"/>
+            <arg value="ane"/>
+            <arg value="${name}.ane"/>
+            <arg value="../build/extension.xml"/>
+            <arg line="-swc swc/${name}.swc"/>
+            <arg line="-platform iPhone-ARM -platformoptions ../build/platform.xml -C ios/ ."/>
+            <arg line="-platform Android-ARM -C android/ ."/>
+            <arg line="-platform default -C default/ ."/>
+        </exec>
+        
+        <mkdir dir="../bin/support"/>
+	    <move file="../temp_support/swc/${name}.swc" todir="../bin/support"/>
+        <move file="../temp_support/${name}.ane" todir="../bin/support"/>
+       <!-- <delete dir="../temp"/> -->
+       
+        <zip destfile="../bin/support/AirFuseAPI_with_support_lib.zip" basedir="../bin/support" includes="${name}.swc,${name}.ane" />
+    </target>
+    
+    <target name="clean">
+        <delete dir="../temp"/>
+        <delete dir="../temp_support"/>
     </target>
 </project>
