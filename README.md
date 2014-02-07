@@ -13,13 +13,17 @@ Installation
 
 To integrate the plugin into your Flash project, follow the following steps:
 
-1.  First, copy the AIRFuseAPI.ane and AIRFuseAPI.swf found in the github directory (/bin/) into your project.
-2.  Next, in Flash navigate to:<rr />File->Air for iOS Settings->General<br />In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
-3.  Finally, navigate to:
+1.  First, copy the AIRFuseAPI.ane and AIRFuseAPI.swc found in the github directory (/bin/) into your project.
+2.  Next, in Flash navigate to: <rr />File->Air for iOS (or Android) Settings->General<br />In the "Included files" list, add an entry and choose the AirFuseAPI.ane file.
+3.  Next, navigate to:
 
 File->Advanced Actionscript Settings->Library Path
 
 Click the button to "Browse to a Native Air Extension (ANE file)", and select the AIRFuseAPI.ane file.
+
+4.  Finally, navigate to: <rr />File->Actionscript Settings->Source path<br />
+
+Add the path which contains the swc file to this list.
 
 
 Usage
