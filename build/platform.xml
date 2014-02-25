@@ -14,5 +14,6 @@
         <option>-weak_framework EventKitUI</option>
         <option>-weak_framework MessageUI</option>
         <option>-weak_framework CoreMedia</option>
+        <option>-weak_framework MediaPlayer</option>
     </linkerOptions> 
 </platform>
