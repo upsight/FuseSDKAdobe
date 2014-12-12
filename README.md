@@ -1,6 +1,6 @@
 # Fuse Adobe Air SDK
 
-This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for the [FuseAPI](http://www.fuseboxx.com).
+This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for the Fuse SDK.
 
 ## Current Version
 
