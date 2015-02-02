@@ -306,11 +306,6 @@
 			android:hardwareAccelerated="true"
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 		<activity android:name="com.fusepowered.s1.S1InterstitialActivity" android:hardwareAccelerated="true"/>
-		<activity
-			android:name="com.vungle.sdk.VungleAdvert"
-			android:configChanges="keyboardHidden|orientation|screenSize"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-		<service android:name="com.vungle.sdk.VungleIntentService" />
   			<activity
 			android:name="com.fusepowered.ads.providers.FuseInterstitialActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
