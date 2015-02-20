@@ -4,9 +4,9 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 ## Current Version
 
-Version: 1.37.3
+Version: 1.38.1
 
-Released: December 12th, 2014
+Released: February 19th, 2015
 
 ## To Download
 The easiest way to obtain the Fuse SDK is to click the "Download ZIP" button located in the right-hand navigation pane of the Github repository page.
@@ -23,6 +23,11 @@ Please review the [integration instructions](http://wiki.adrally.com/index.php/A
 Please visit [http://www.adrally.com](http://www.adrally.com) for an account to get started!
 
 ## Release Notes
+
+### 1.38.3
+February 19th, 2015
+* Support for external ad providers (AdColony, HyprMX, AppLovin)
+* Bug fixes
 
 ### 1.37.3
 December 12th, 2014
