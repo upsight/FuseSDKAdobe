@@ -24,7 +24,7 @@ Please visit [http://www.adrally.com](http://www.adrally.com) for an account to 
 
 ## Release Notes
 
-### 1.38.3
+### 1.38.1
 February 19th, 2015
 * Support for external ad providers (AdColony, HyprMX, AppLovin)
 * Bug fixes
