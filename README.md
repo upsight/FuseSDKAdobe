@@ -4,7 +4,7 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 ## Current Version
 
-Version: 1.38.1
+Version: 2.0.2
 
 Released: February 19th, 2015
 
@@ -23,6 +23,14 @@ Please review the [integration instructions](http://wiki.adrally.com/index.php/A
 Please visit [http://www.adrally.com](http://www.adrally.com) for an account to get started!
 
 ## Release Notes
+
+### 2.0.3
+April 22nd, 2015
+* Full Release of FuseSDK 2.0 features
+* Updated Support for Rewarded ads
+* In app purchase and virtual goods offers
+* Bug Fixes
+* Fix for Crash found on ios 64 bit devices running ios 7
 
 ### 1.38.1
 February 19th, 2015
