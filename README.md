@@ -4,9 +4,9 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 ## Current Version
 
-Version: 2.0.5.1
+Version: 2.1.1
 
-Released: May 20th, 2015
+Released: June 5th, 2015
 
 ## To Download
 The easiest way to obtain the Fuse SDK is to click the "Download ZIP" button located in the right-hand navigation pane of the Github repository page.
@@ -23,6 +23,13 @@ Please review the [integration instructions](http://wiki.fusepowered.com/index.p
 Please visit [http://www.fusepowered.com](http://www.fusepowered.com) for an account to get started!
 
 ## Release Notes
+
+### 2.1.1
+June 5th, 2015
+* Added new segmentation functionality
+* Added parental consent toggle
+* Added new gender enums
+* Misc bug fixes
 
 ### 2.0.5.1
 May 20th, 2015
