@@ -4,9 +4,9 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 ## Current Version
 
-Version: 2.1.4
+Version: 2.2.3
 
-Released: June 18th, 2015
+Released: August 28h, 2015
 
 ## To Download
 The easiest way to obtain the Fuse SDK is to click the "Download ZIP" button located in the right-hand navigation pane of the Github repository page.
@@ -23,6 +23,16 @@ Please review the [integration instructions](http://wiki.fusepowered.com/index.p
 Please visit [http://www.fusepowered.com](http://www.fusepowered.com) for an account to get started!
 
 ## Release Notes
+
+### 2.2.3
+Aug 28th, 2015
+* Release of FuseSDK 2.2 Features Including;
+* Vast Support
+* Ability to register rewarded user ID
+* New ad Providers added(leadbolt and nativeX)
+* Added adDidShow callback
+* expanded offer callback data
+* Bug Fixes
 
 
 ### 2.1.4
