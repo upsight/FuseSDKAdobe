@@ -4,9 +4,9 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 ## Current Version
 
-Version: 2.3.2
+Version: 2.4.2
 
-Released: October 27h, 2015
+Released: November 26th, 2015
 
 ## To Download
 The easiest way to obtain the Fuse SDK is to click the "Download ZIP" button located in the right-hand navigation pane of the Github repository page.
@@ -24,6 +24,12 @@ Please visit [http://www.fusepowered.com](http://www.fusepowered.com) for an acc
 
 ## Release Notes
 
+### 2.4.2
+Nov 26th, 2015
+* Ad Provider updates
+* VAST Improvements
+* Custom End Cards
+* Bug fixes
 
 ### 2.3.2
 Oct 27th, 2015
@@ -42,7 +48,6 @@ Aug 28th, 2015
 * Added adDidShow callback
 * expanded offer callback data
 * Bug Fixes
-
 
 ### 2.1.4
 June 18th, 2015
@@ -70,17 +75,6 @@ April 22nd, 2015
 * In app purchase and virtual goods offers
 * Bug Fixes
 * Fix for Crash found on ios 64 bit devices running ios 7
-
-### 1.38.1
-February 19th, 2015
-* Support for external ad providers (AdColony, HyprMX, AppLovin)
-* Bug fixes
-
-### 1.37.3
-December 12th, 2014
-* iOS 8 fixes
-* Ad provider updates and fixes
-* Additional Fuse SDK actions supported
 
 ## Legal Requirements
 By downloading the Fuse Powered SDK, you are granted a limited, non-commercial license to use and review the SDK solely for evaluation purposes.  If you wish to integrate the SDK into any commercial applications, you must register an account with [Fuse Powered](https://www.fusepowered.com) and accept the terms and conditions on the Fuse Powered website.
