@@ -25,7 +25,7 @@ Please visit [http://www.fusepowered.com](http://www.fusepowered.com) for an acc
 ## Release Notes
 
 ### 2.5.5
-April 13th, 2016
+April 26th, 2016
 * Ad Provider updates 
 * Rich Media Pre/post roll for Cross Promition Video
 * IAP offer Price Localization
