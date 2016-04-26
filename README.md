@@ -6,7 +6,7 @@ This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensi
 
 Version: 2.5.5
 
-Released: April 13th, 2016
+Released: April 26th, 2016
 
 ## To Download
 The easiest way to obtain the Fuse SDK is to click the "Download ZIP" button located in the right-hand navigation pane of the Github repository page.
@@ -25,7 +25,7 @@ Please visit [http://www.fusepowered.com](http://www.fusepowered.com) for an acc
 ## Release Notes
 
 ### 2.5.5
-April 13th, 2016
+April 26th, 2016
 * Ad Provider updates 
 * Rich Media Pre/post roll for Cross Promition Video
 * IAP offer Price Localization
